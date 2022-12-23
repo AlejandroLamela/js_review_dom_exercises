@@ -52,7 +52,7 @@ const button$$ =  document.querySelector("#delete-last-element");
 
 function deleteLastElement (){
     const allDiv$$ = document.querySelectorAll('div');
-    allDiv$$.pop();
+    allDiv$$[allDiv$$.length-1].remove();
 }
 
 
@@ -61,3 +61,27 @@ button$$.addEventListener("click",deleteLastElement);
 // 1.6 Basandote en el ejercicio anterior. Crea un botón para cada uno de los 
 // elementos de las listas que elimine ese mismo elemento del html.
 
+const countries3 = [
+	{title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=1'}, 
+	{title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=2'},
+	{title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=3'},
+	{title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=4'},
+	{title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=5'}
+];
+
+for (const country of countries3) {
+    const div_img$$= document.createElement('div');
+    div_img$$.innerHTML = `<h4>${country.title}</h4> <img src="${country.imgUrl}"/>`;
+    const buttons$$=document.createElement('button');
+    buttons$$.textContent=`Delete`;
+    div_img$$.appendChild(buttons$$);
+    document.body.appendChild(div_img$$);
+    
+    buttons$$.addEventListener('click',deleteImage);
+
+     function deleteImage (){
+        div_img$$.remove();
+     }
+
+
+}
